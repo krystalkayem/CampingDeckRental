@@ -2,105 +2,124 @@
 
 namespace IntegrativeProg
 {
-    class Program
+    internal class Program
     {
+        //rent an item, return item, exit
+        static string[] actions = new string[] { "[1] Rent an Item", "[2] Return an Item", "[3] Exit" };
+        static string[] items = new string[] { "Bike", "Tent", "Camping Chairs", "Camping Tables", "Sleeping Bags", "Umbrella", "Lights", "Cooking Utensils", "Sleeping pads", "Sunshade", "Axe", "Pillow", "Blankets" };
+        static bool[] rented = new bool[items.Length];
+        static string[] borrowers = new string[items.Length];
+
         static void Main(string[] args)
         {
-            int adminPin = 041205;
-            bool isAuthenticated = false;
-            string[] items = new string[10] { "Bike", "Tent", "Camping chairs", "Camping tables", "Sleeping bags", "Lighting", "Kitchen gear", "Sleeping pads", "Sunshade", "Axe" };  //items
-            bool[] rented = new bool[10];  // false = not rented, true = rented
-            string[] borrowers = new string[10]; // Adjusted size to match the items array
+            Console.WriteLine("Welcome to Campingdeck Rentals!!");
 
-            Console.WriteLine("Welcome to Campingdeck Rentals!");
+            //pin, rent an item, return an item
+            int pin = 041205;
+            int userPin = 0;
 
-            while (!isAuthenticated)
+            Console.Write("Enter Admin PIN: ");
+            userPin = Convert.ToInt32(Console.ReadLine());
+
+            if (userPin == pin)
             {
-                Console.Write("Enter PIN to rent an item: ");
-                if (int.TryParse(Console.ReadLine(), out int enteredPin) && enteredPin == adminPin)
+                Console.WriteLine("PIN verified. Welcome, you are now logged in!!");
+
+                int userAction;
+                do
                 {
-                    isAuthenticated = true;
-                    Console.WriteLine("PIN verified. Welcome, you are now logged in!");
-                }
-                else
+                    DisplayActions();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Enter Action: ");
+                    userAction = Convert.ToInt32(Console.ReadLine());
+
+                    switch (userAction)
+                    {
+                        case 1:
+                            BorrowItem();
+                            break;
+                        case 2:
+                            ReturnItem();
+                            break;
+                        case 3:
+                            Console.WriteLine("Thank you for renting at Campingdeck Rentals. Enjoy!!");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid action. Please enter between 1-3 only.");
+                            break;
+                    }
+                } while (userAction != 3);
+            }
+            else
+            {
+                Console.WriteLine("Incorrect PIN. Access Denied.");
+            }
+        }
+
+        static void DisplayActions()
+        {
+            Console.WriteLine("\n-----------------------------");
+            foreach (var action in actions)
+            {
+                Console.WriteLine(action);
+            }
+        }
+        static void BorrowItem()
+        {
+            Console.WriteLine("\nAvailable items: ");
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (!rented[i])
                 {
-                    Console.WriteLine("Incorrect PIN. Please try again.");
+                    Console.WriteLine($"[{i + 1}] {items[i]}");
                 }
             }
 
-            bool exit = false;
-            while (!exit)
+            Console.Write("Enter the number of the item you want to borrow: ");
+            int itemNumber = Convert.ToInt32(Console.ReadLine());
+
+            if (itemNumber > 0 && itemNumber <= items.Length && !rented[itemNumber - 1])
             {
-                // display available items
-                Console.WriteLine("\nAvailable Items:");
-                for (int i = 0; i < items.Length; i++)
-                {
-                    string availability = rented[i] ? $"Rented by {borrowers[i]}" : "Available";
-                    Console.WriteLine($"[{i + 1}] {items[i]} - {availability}");
-                }
+                Console.Write("Enter your full name: ");
+                string name = Console.ReadLine();
 
-                Console.WriteLine("\nEnter the number of the item you want to rent, 11 to return an item, or 0 to exit:");
-                int action = Convert.ToInt32(Console.ReadLine());
+                rented[itemNumber - 1] = true;
+                borrowers[itemNumber - 1] = name;
 
-                if (action == 0)
-                {
-                    exit = true;
-                    Console.WriteLine("Thank you for renting at Campingdeck Rentals!");
-                }
-                else if (action == 11) // option to return the item
-                {
-                    Console.WriteLine("\nEnter the number of the item you want to return (1-10):");
-                    int returnAction = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Thank you, {name}. You have successfully borrowed the {items[itemNumber - 1]}.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection or item or item already rented. Please try again.");
+            }
+        }
 
-                    if (returnAction >= 1 && returnAction <= items.Length)
-                    {
-                        int index = returnAction - 1;
-                        if (rented[index])
-                        {
-                            Console.WriteLine($"'{items[index]}' is currently rented by {borrowers[index]}. Do you want to return it? (Y/N)");
-                            string confirmation = Console.ReadLine().ToUpper();
+        static void ReturnItem()
+        {
+            Console.WriteLine("\nItems Currently Rented: ");
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (rented[i])
+                {
+                    Console.WriteLine($"[{i + 1}] {items[i]} Rented by {borrowers[i]}");
+                }
+            }
 
-                            if (confirmation == "Y")
-                            {
-                                rented[index] = false; // mark item as returned
-                                Console.WriteLine($"'{items[index]}' has been returned. Thank you!");
-                                borrowers[index] = null; // clear the borrower's name
-                            }
-                            else
-                            {
-                                Console.WriteLine("Item return cancelled.");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("This item was not rented.");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid item number.");
-                    }
-                }
-                else if (action >= 1 && action <= items.Length) // rent an item
-                {
-                    int index = action - 1;
-                    if (rented[index])
-                    {
-                        Console.WriteLine("Sorry, the item is already rented.");
-                    }
-                    else
-                    {
-                        Console.Write("Enter your name: ");
-                        borrowers[index] = Console.ReadLine(); // store the borrower's name
-                        rented[index] = true;  // mark item as rented
-                        Console.WriteLine($"You have successfully rented the {items[index]}.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid option. Please try again.");
-                }
+            Console.Write("\nEnter the number of the item you want to return: ");
+            int itemNumber = Convert.ToInt32(Console.ReadLine());
+
+            if (itemNumber > 0 && itemNumber <= items.Length && rented[itemNumber - 1])
+            {
+                Console.WriteLine($"Thank you, {borrowers[itemNumber - 1]}, for returning the {items[itemNumber - 1]}.");
+                rented[itemNumber - 1] = false;
+                borrowers[itemNumber - 1] = null;
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection or item not currently rented. Please try again.");
             }
         }
     }
+          
+
 }

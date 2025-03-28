@@ -10,7 +10,7 @@ namespace CampingDeck
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Campingdeck Rentals!!");
+            Console.WriteLine("Welcome to Campingdeck Rentals! :)");
 
             //pin, rent an item, return an item, view all items
             int userPin = 0;

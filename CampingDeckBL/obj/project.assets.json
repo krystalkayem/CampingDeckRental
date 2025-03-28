@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CampingDeckBL\\CampingDeckBL.csproj",
+      "projectUniqueName": "C:\\Users\\jinky\\Source\\Repos\\CampingDeckRental\\CampingDeckBL\\CampingDeckBL.csproj",
       "projectName": "CampingDeckBL",
-      "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CampingDeckBL\\CampingDeckBL.csproj",
+      "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDeckRental\\CampingDeckBL\\CampingDeckBL.csproj",
       "packagesPath": "C:\\Users\\jinky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CampingDeckBL\\obj\\",
+      "outputPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDeckRental\\CampingDeckBL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

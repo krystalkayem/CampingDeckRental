@@ -10,3 +10,15 @@ C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeckBL\obj\Debug\net9.0\
 C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeckBL\obj\Debug\net9.0\refint\CampingDeckBL.dll
 C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.pdb
 C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeckBL\obj\Debug\net9.0\ref\CampingDeckBL.dll
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\bin\Debug\net9.0\CampingDeckBL.deps.json
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\bin\Debug\net9.0\CampingDeckBL.dll
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\bin\Debug\net9.0\CampingDeckBL.pdb
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.AssemblyInfoInputs.cache
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.AssemblyInfo.cs
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.csproj.CoreCompileInputs.cache
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.sourcelink.json
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.dll
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\refint\CampingDeckBL.dll
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.pdb
+C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CampingDeck\CampingDeckBL\obj\Debug\net9.0\ref\CampingDeckBL.dll

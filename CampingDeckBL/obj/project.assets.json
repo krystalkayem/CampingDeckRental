@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "CampingDeckDL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "RentalCommon": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CampingDeckDL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CampingDeckDL.dll": {}
+        }
+      },
+      "RentalCommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/RentalCommon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentalCommon.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CampingDeckDL/1.0.0": {
+      "type": "project",
+      "path": "../CampingDeckDL/CampingDeckDL.csproj",
+      "msbuildProject": "../CampingDeckDL/CampingDeckDL.csproj"
+    },
+    "RentalCommon/1.0.0": {
+      "type": "project",
+      "path": "../RentalCommon/RentalCommon.csproj",
+      "msbuildProject": "../RentalCommon/RentalCommon.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "CampingDeckDL >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\jinky\\.nuget\\packages\\": {},
@@ -14,11 +51,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CampingDeck\\CampingDeckBL\\CampingDeckBL.csproj",
+      "projectUniqueName": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\CampingDeckBL.csproj",
       "projectName": "CampingDeckBL",
-      "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CampingDeck\\CampingDeckBL\\CampingDeckBL.csproj",
+      "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\CampingDeckBL.csproj",
       "packagesPath": "C:\\Users\\jinky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CampingDeck\\CampingDeckBL\\obj\\",
+      "outputPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -38,7 +75,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj": {
+              "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

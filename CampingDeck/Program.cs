@@ -1,24 +1,23 @@
 ﻿using CampingDeckBL;
+using RentalCommon;
 
 namespace CampingDeck
 {
     internal class Program
     {
-        //rent an item, return item, view all items, exit
         static string[] actions = new string[] { "[1] Rent an Item", "[2] Return an Item", "[3] View All Items", "[4] Exit" };
-
-
+        static CampingDeckRentalProcess rentalProcess = new CampingDeckRentalProcess();
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Campingdeck Rentals! :)");
 
             //pin, rent an item, return an item, view all items
-            int userPin = 0;
+            string userPin = string.Empty; 
 
             Console.Write("Enter Admin PIN: ");
-            userPin = Convert.ToInt32(Console.ReadLine());
+            userPin = (Console.ReadLine());
 
-            if (CampingDeckRentalProcess.ValidatePIN(userPin))
+            if (rentalProcess.ValidateAdminPin(userPin))
             {
                 Console.WriteLine("PIN verified. Welcome, you are now logged in!!");
 
@@ -28,19 +27,17 @@ namespace CampingDeck
                     DisplayActions();
                     userAction = GetUserInput();
                     Console.WriteLine("-----------------------------");
-                    //Console.Write("Enter Action: ");
-                    //userAction = Convert.ToInt32(Console.ReadLine());
 
                     switch (userAction)
                     {
                         case 1:
-                            BorrowItem();
+                            RentItem();
                             break;
                         case 2:
                             ReturnItem();
                             break;
                         case 3:
-                            DisplayItems();
+                            ViewAllItems();
                             break;
                         case 4:
                             Console.WriteLine("Thank you for renting at Campingdeck Rentals. Enjoy!!");
@@ -72,95 +69,66 @@ namespace CampingDeck
             return Convert.ToInt32(Console.ReadLine());
         }
 
-        static void DisplayItems()
+        static void ViewAllItems()
         {
             Console.WriteLine("\nAll Camping Items: ");
-            Console.WriteLine("Item Name               Quantity");
-            Console.WriteLine("-----------------------------------------");
+            var items = rentalProcess.GetItems();
 
-            for (int i = 0; i < CampingDeckRentalProcess.items.Length; i++)
+            foreach (var item in items)
             {
-                string itemName = CampingDeckRentalProcess.items[i];
-                int quantity = CampingDeckRentalProcess.quantities[i];
-
-                if (itemName.Length < 25)
-                {
-                    itemName += new string(' ', 25 - itemName.Length);
-                }
-                Console.WriteLine(itemName + quantity);
+                Console.WriteLine($"Item: {item.Name}, Quantity: {item.Quantity}");
             }
         }
 
-        static void BorrowItem()
+        static void RentItem()
         {
+            var items = rentalProcess.GetItems();
             Console.WriteLine("\nAvailable Items:");
-            Console.WriteLine("No.   Item Name               Quantity");
-            Console.WriteLine("-----------------------------------------");
-
-            for (int i = 0; i < CampingDeckRentalProcess.items.Length; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                string itemName = CampingDeckRentalProcess.items[i];
-                int quantity = CampingDeckRentalProcess.quantities[i];
-
-                if (quantity > 0)
-                {
-                    if (itemName.Length < 25)
-                    {
-                        itemName += new string(' ', 25 - itemName.Length);
-                    }
-                    Console.WriteLine($"{i + 1,-4} {itemName}{quantity}");
-                }
+                Console.WriteLine($"[{i + 1}] {items[i].Name} (Qty: {items[i].Quantity})");
             }
 
-            Console.Write("Enter the number of the item you want to borrow: ");
-            int selection = Convert.ToInt32(Console.ReadLine());
-
-            if (selection < 0 || selection > CampingDeckRentalProcess.items.Length || CampingDeckRentalProcess.quantities[selection - 1] == 0)
-            {
-                Console.WriteLine("Invalid selection or item out of stock. Please try again.");
-                return;
-            }
-
+            Console.Write("Enter the number of the item you want to rent: ");
+            int index = Convert.ToInt32(Console.ReadLine()) - 1;
             Console.Write("Enter your full name: ");
             string name = Console.ReadLine();
 
-            if (CampingDeckRentalProcess.BorrowItem(selection, name))
+            if (rentalProcess.BorrowItem(index, name))
             {
-                Console.WriteLine($"Thank you, {name}. You have successfully borrowed the {CampingDeckRentalProcess.items[selection - 1]}.");
+                Console.WriteLine("Item successfully rented!");
             }
             else
             {
-                Console.WriteLine("Borrowing failed. The item may already be rented or the selection was invalid.");
+                Console.WriteLine("Failed to rent item.");
             }
-
         }
 
         public static void ReturnItem()
         {
-            Console.WriteLine("\nRented Items:");
-            for (int i = 0; i < CampingDeckRentalProcess.items.Length; i++)
-            {
-                if (CampingDeckRentalProcess.rented[i])
-                {
-                    Console.WriteLine($"[{i + 1}] {CampingDeckRentalProcess.items[1]} (Rented by {CampingDeckRentalProcess.borrowers[i]})");
-                }
-            }
-            Console.Write("Enter the number of the item you want to return: ");
-            int selection = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nRented Items: ");
+            var rentedItems = rentalProcess.GetRentedItems();
 
-            if (selection < 0 || selection > CampingDeckRentalProcess.items.Length || !CampingDeckRentalProcess.rented[selection - 1])
+            if (rentedItems.Count == 0)
             {
-                Console.WriteLine("Invalid selection. Please try again.");
+                Console.WriteLine("No items currently rented.");
                 return;
             }
-
-            if (CampingDeckRentalProcess.ReturnItem(selection))
+            for (int i = 0; i < rentedItems.Count; i++)
             {
-                Console.WriteLine($"Item {CampingDeckRentalProcess.items[selection - 1]} has been returned successfully.");
+                Console.WriteLine($"[{i + 1}] {rentedItems[i].Name} - Borrowed by: {rentedItems[i].Borrower}");
+            }
+
+            Console.Write("Enter the number of the item you want to return: ");
+            int index = Convert.ToInt32(Console.ReadLine()) - 1;
+
+            if (rentalProcess.ReturnItem(index))
+            {
+                Console.WriteLine("Item successfully returned!");
             }
             else
             {
-                Console.WriteLine("Return failed. The selection might be invalid or the item is not rented.");
+                Console.WriteLine("Failed to return item. Please check the item number.");
             }
         }
     }

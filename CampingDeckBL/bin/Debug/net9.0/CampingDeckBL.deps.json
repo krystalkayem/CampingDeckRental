@@ -7,14 +7,46 @@
   "targets": {
     ".NETCoreApp,Version=v9.0": {
       "CampingDeckBL/1.0.0": {
+        "dependencies": {
+          "CampingDeckDL": "1.0.0"
+        },
         "runtime": {
           "CampingDeckBL.dll": {}
+        }
+      },
+      "CampingDeckDL/1.0.0": {
+        "dependencies": {
+          "RentalCommon": "1.0.0"
+        },
+        "runtime": {
+          "CampingDeckDL.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "RentalCommon/1.0.0": {
+        "runtime": {
+          "RentalCommon.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "CampingDeckBL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CampingDeckDL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RentalCommon/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

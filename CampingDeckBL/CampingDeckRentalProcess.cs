@@ -1,48 +1,39 @@
-﻿namespace CampingDeckBL
+﻿using CampingDeckDL;
+using RentalCommon;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CampingDeckBL
 {
     public class CampingDeckRentalProcess
     {
-        public static string[] items = new string[] { "Bike", "Tent", "Camping Chairs", "Camping Tables", "Sleeping Bags", "Umbrella", "Lights", "Cooking Utensils", "Sleeping pads", "Sunshade", "Axe", "Pillow", "Blankets" };
-        public static int[] quantities = new int[] { 10, 15, 30, 20, 20, 10, 20, 10, 15, 10, 10, 10, 10 };
-        public static bool[] rented = new bool[items.Length];
-        public static string[] borrowers = new string[items.Length];
-        public static int pin = 041205;
+        RentalDataLogic rentalDataLogic = new RentalDataLogic();
 
-        public static bool BorrowItem(int itemNumber, string name)
+
+        public List<CampingCommon> GetItems()
         {
-            if (itemNumber > 0 && itemNumber <= items.Length && !rented[itemNumber - 1] && quantities[itemNumber - 1] > 0 && !string.IsNullOrWhiteSpace(name))
-            {
-                rented[itemNumber - 1] = true;
-                borrowers[itemNumber - 1] = name;
-                quantities[itemNumber - 1]--;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return rentalDataLogic.GetItems();
         }
 
-
-        public static bool ReturnItem(int itemNumber)
+        public List<CampingCommon> GetRentedItems()
         {
-            if (itemNumber > 0 && itemNumber <= items.Length && rented[itemNumber - 1])
-            {
-                rented[itemNumber - 1] = false;
-                borrowers[itemNumber - 1] = null;
-                quantities[itemNumber - 1]++;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return rentalDataLogic.GetItems().Where(i => !string.IsNullOrEmpty(i.Borrower)).ToList();
         }
 
-        public static bool ValidatePIN(int userPin)
+        public bool BorrowItem(int itemIndex, string borrower)
         {
-            return userPin == pin;
+            return rentalDataLogic.BorrowItem(itemIndex, borrower);
         }
+
+        public bool ReturnItem(int itemIndex)
+        {
+            return rentalDataLogic.ReturnItem(itemIndex);
+        }
+
+        public bool ValidateAdminPin(string pin)
+        {
+            return rentalDataLogic.ValidateAdminPin(pin);
+        }
+        
     }
 }
-//quantity, remove getavailable items, remove properties

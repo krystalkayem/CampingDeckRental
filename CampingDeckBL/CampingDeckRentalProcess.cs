@@ -7,7 +7,7 @@ namespace CampingDeckBL
 {
     public class CampingDeckRentalProcess
     {
-        RentalDataLogic rentalDataLogic = new RentalDataLogic();
+        RentalDataService rentalDataService = new RentalDataService();
 
 
         public List<CampingCommon> GetItems()

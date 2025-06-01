@@ -1,5 +1,5 @@
-﻿using RentalCommon;
-using System;
+﻿using System;
+using RentalCommon;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +7,15 @@ using System.Threading.Tasks;
 
 namespace CampingDeckDL
 {
-    public class InMemoryDataService : IRentalDataService
+    public class InMemoryDataService : IRentalDataService 
     {
-        public List<CampingCommon> items = new List<CampingCommon>();
-        public InMemoryDataService() { CreateDummyCampingItems(); }
+        List<CampingCommon> items = new List<CampingCommon>();
+        
+        public InMemoryDataService()
+        {
+            CreateDummyCampingItems();
+        }
+
         private void CreateDummyCampingItems()
         {
             items.Add(new CampingCommon("Bike", 10));
@@ -28,21 +33,14 @@ namespace CampingDeckDL
             items.Add(new CampingCommon("Blankets", 10));
         }
 
-        public List<CampingCommon> GetItems()
+        public void Save(List<CampingCommon> newItems)
+        {
+            items = new List<CampingCommon>(newItems);
+        }
+
+        public List<CampingCommon> Load()
         {
             return items;
-        }
-        public void UpdateItem(CampingCommon item)
-        {
-            for (int i = 0; i < items.Count; i++)
-            {
-                if (items[i].Name == item.Name)
-                {
-                    items[i].Quantity = item.Quantity;
-                    items[i].Borrower = item.Borrower;
-                    return;
-                }
-            }
         }
     }
 }

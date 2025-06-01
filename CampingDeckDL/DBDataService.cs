@@ -1,6 +1,7 @@
 ﻿using RentalCommon;
 using Microsoft.Data.Sql;
 using Microsoft.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace CampingDeckDL
 {
@@ -22,7 +23,7 @@ namespace CampingDeckDL
             string selectStatement = "SELECT Name, Item, Quantity";
             sqlCommand selectCommand = new sqlCommand(selectStatement), sqlConnection;
 
-            sqlConnection.Open(); 
+            sqlConnection.Open();
 
 
             //jijij
@@ -34,7 +35,8 @@ namespace CampingDeckDL
                 Name = reader["Name"].ToString();
                 Item = reader["Item"].ToString();
                 Quantity = Convert.ToInt32(reader["Quantity"]);
-            };
+            }
+            ;
             items.Add(item);
         }
 

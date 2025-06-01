@@ -1,4 +1,10 @@
-﻿using RentalCommon;
+﻿using System;
+using RentalCommon;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace CampingDeckDL
 {
@@ -8,40 +14,55 @@ namespace CampingDeckDL
 
         public RentalDataService()
         {
-            // rentalDataService = new TextFileDataService();
-            // rentalDataService = new InMemoryDataService();
-            rentalDataService = new JsonFileDataService();
+            //rentalDataService = new TextFileDataService();
+            rentalDataService = new InMemoryDataService();
+            //rentalDataService = new JsonFileDataService();
+            //rentalDataService = new DBDataService();
         }
 
-        public List<CampingCommon> GetAllItems()
+        public List<CampingCommon> GetItems()
         {
-            return rentalDataService.GetItems();
+            return rentalDataService.Load();
         }
 
-        public bool RentItem(int itemIndex, string borrower)
+        public void SaveItems()
         {
-            List<CampingCommon> items = rentalDataService.GetItems();
-            if (itemIndex >= 0 && itemIndex < items.Count && items[itemIndex].Quantity > 0 && string.IsNullOrEmpty(items[itemIndex].Borrower))
+            rentalDataService.Save(rentalDataService.Load());
+        }
+
+        public bool BorrowItem(int index, string borrowerName)
+        {
+            var items = rentalDataService.Load();
+
+            if (index >= 0 && index < items.Count && items[index].Quantity > 0 && string.IsNullOrEmpty(items[index].Borrower))
             {
-                items[itemIndex].Quantity--;
-                items[itemIndex].Borrower = borrower;
-                rentalDataService.UpdateItem(items[itemIndex]);
+                items[index].Quantity--;
+                items[index].Borrower = borrowerName;
+                rentalDataService.Save(items);
                 return true;
             }
             return false;
         }
 
-        public bool ReturnItem(int itemIndex)
+        public bool ReturnItem(int index)
         {
-            List<CampingCommon> items = rentalDataService.GetItems();
-            if (itemIndex >= 0 && itemIndex < items.Count && !string.IsNullOrEmpty(items[itemIndex].Borrower))
+            var items = rentalDataService.Load();
+
+            if (index >= 0 && index < items.Count && !string.IsNullOrEmpty(items[index].Borrower))
             {
-                items[itemIndex].Quantity++;
-                items[itemIndex].Borrower = null;
-                rentalDataService.UpdateItem(items[itemIndex]);
+                items[index].Quantity++;
+                items[index].Borrower = null;
+                rentalDataService.Save(items);
                 return true;
             }
             return false;
+        }
+
+        public bool ValidateAdminPin(string pin)
+        {
+            const string AdminPin = "123456";
+            return pin == AdminPin;
         }
     }
+
 }

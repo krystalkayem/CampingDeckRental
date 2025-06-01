@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CampingDeckDL
 {
-    interface IRentalDataService
+    public interface IRentalDataService
     {
-        public List<CampingCommon> GetItems();
-        public void UpdateItem(CampingCommon item);
+        public void Save(List<CampingCommon> items);
+        List<CampingCommon> Load();
     }
 }

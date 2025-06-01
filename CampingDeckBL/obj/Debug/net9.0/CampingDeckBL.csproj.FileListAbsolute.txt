@@ -40,3 +40,21 @@ C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CDRental\CampingDeckBL\obj\Debu
 C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CDRental\CampingDeckBL\obj\Debug\net9.0\refint\CampingDeckBL.dll
 C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.pdb
 C:\Users\jinky\OneDrive\Desktop\Integrative Prog\CDRental\CampingDeckBL\obj\Debug\net9.0\ref\CampingDeckBL.dll
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\CampingDeckBL.deps.json
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\CampingDeckBL.dll
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\CampingDeckBL.pdb
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\CampingDeckDL.dll
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\RentalCommon.dll
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\CampingDeckDL.pdb
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\bin\Debug\net9.0\RentalCommon.pdb
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.csproj.AssemblyReference.cache
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.AssemblyInfoInputs.cache
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.AssemblyInfo.cs
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.csproj.CoreCompileInputs.cache
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.sourcelink.json
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingD.5872E02B.Up2Date
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.dll
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\refint\CampingDeckBL.dll
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\CampingDeckBL.pdb
+C:\Users\jinky\Source\Repos\CampingDRental\CampingDeckBL\obj\Debug\net9.0\ref\CampingDeckBL.dll

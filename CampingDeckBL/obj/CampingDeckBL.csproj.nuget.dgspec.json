@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\CampingDeckBL.csproj": {}
+    "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckBL\\CampingDeckBL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\CampingDeckBL.csproj": {
+    "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckBL\\CampingDeckBL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\CampingDeckBL.csproj",
+        "projectUniqueName": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckBL\\CampingDeckBL.csproj",
         "projectName": "CampingDeckBL",
-        "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\CampingDeckBL.csproj",
+        "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckBL\\CampingDeckBL.csproj",
         "packagesPath": "C:\\Users\\jinky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckBL\\obj\\",
+        "outputPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckBL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj": {
-                "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj"
+              "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckDL\\CampingDeckDL.csproj": {
+                "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckDL\\CampingDeckDL.csproj"
               }
             }
           }
@@ -73,14 +73,14 @@
         }
       }
     },
-    "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj": {
+    "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckDL\\CampingDeckDL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj",
+        "projectUniqueName": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckDL\\CampingDeckDL.csproj",
         "projectName": "CampingDeckDL",
-        "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\CampingDeckDL.csproj",
+        "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckDL\\CampingDeckDL.csproj",
         "packagesPath": "C:\\Users\\jinky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\CampingDeckDL\\obj\\",
+        "outputPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\CampingDeckDL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -101,8 +101,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\RentalCommon\\RentalCommon.csproj": {
-                "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\RentalCommon\\RentalCommon.csproj"
+              "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\RentalCommon.csproj": {
+                "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\RentalCommon.csproj"
               }
             }
           }
@@ -142,14 +142,14 @@
         }
       }
     },
-    "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\RentalCommon\\RentalCommon.csproj": {
+    "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\RentalCommon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\RentalCommon\\RentalCommon.csproj",
+        "projectUniqueName": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\RentalCommon.csproj",
         "projectName": "RentalCommon",
-        "projectPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\RentalCommon\\RentalCommon.csproj",
+        "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\RentalCommon.csproj",
         "packagesPath": "C:\\Users\\jinky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jinky\\OneDrive\\Desktop\\Integrative Prog\\CDRental\\RentalCommon\\obj\\",
+        "outputPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

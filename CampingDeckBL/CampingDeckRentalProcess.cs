@@ -12,12 +12,20 @@ namespace CampingDeckBL
 
         public List<CampingCommon> GetItems()
         {
-            return rentalDataService.GetItems();
+            return rentalDataService.GetAllItems();
         }
 
         public List<CampingCommon> GetRentedItems()
         {
-            return rentalDataService.GetItems().Where(i => !string.IsNullOrEmpty(i.Borrower)).ToList();
+            var rentedItems = new List<CampingCommon>();
+            foreach (var item in rentalDataService.GetAllItems())
+            {
+                if (!string.IsNullOrEmpty(item.Borrower))
+                {
+                    rentedItems.Add(item);
+                }
+            }
+            return rentedItems;
         }
 
         public bool BorrowItem(int itemIndex, string borrower)

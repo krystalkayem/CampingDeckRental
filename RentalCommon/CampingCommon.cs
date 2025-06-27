@@ -23,11 +23,14 @@ namespace RentalCommon
         }
 
         public int Quantity { get; set; }
-        public string Name { get; set; }
-        public string Borrower { get; set; }
-        public CampingCommon(string name, int quantity, string pin = "123456")
+        public string ItemName { get; set; }
+        public string Borrower { get; set; } = string.Empty;
+
+
+        public CampingCommon() { }
+        public CampingCommon(string borrower, int quantity, string pin = "123456")
         {
-            Name = name;
+            ItemName = ItemName;
             Quantity = quantity;
             UserPin = pin;
             Borrower = null;

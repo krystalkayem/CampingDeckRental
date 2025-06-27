@@ -9,7 +9,7 @@ namespace CampingDeckDL
 {
     public interface IRentalDataService
     {
-        public void Save(List<CampingCommon> items);
-        List<CampingCommon> Load();
+        List<CampingCommon> GetItems();
+        void UpdateItem(CampingCommon item);
     }
 }

@@ -1,7 +1,5 @@
 ﻿using RentalCommon;
-using Microsoft.Data.Sql;
 using Microsoft.Data.SqlClient;
-using System.Xml.Linq;
 
 namespace CampingDeckDL
 {
@@ -9,7 +7,7 @@ namespace CampingDeckDL
     {
 
         static string connectionString
-    = "Data Source =; Initial Catalog = CampingRental; Integrated Security = True; TrustServerCertificate=True;";
+    = "Data Source = LAPTOP-PJN3L9GN\\SQLEXPRESS; Initial Catalog = CampingRental; Integrated Security = True; TrustServerCertificate=True;";
 
         static SqlConnection sqlConnection;
 
@@ -20,35 +18,67 @@ namespace CampingDeckDL
 
         public List<CampingCommon> GetItems()
         {
-            string selectStatement = "SELECT Name, Item, Quantity";
-            sqlCommand selectCommand = new sqlCommand(selectStatement), sqlConnection;
+            var items = new List<CampingCommon>();
+            string selectStatement = "SELECT Borrower, Item, Quantity FROM DBRentalDetails";
 
-            sqlConnection.Open();
+            using (var command = new SqlCommand(selectStatement, sqlConnection))
 
-
-            //jijij
-
-            SqlDataReader reader = selectCommand.ExecuteReader();
-            List<CampingCommon> items = new List<CampingCommon>();
-            while (reader.Read())
             {
-                Name = reader["Name"].ToString();
-                Item = reader["Item"].ToString();
-                Quantity = Convert.ToInt32(reader["Quantity"]);
+                sqlConnection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                     var item = new CampingCommon
+
+                        {
+                            Borrower = reader["Borrower"].ToString(),
+                            ItemName = reader["Item"].ToString(),
+                            Quantity = Convert.ToInt32(reader["Quantity"])
+                        };
+                        items.Add(item);
+                    }
+                }
+                sqlConnection.Close();
             }
-            ;
-            items.Add(item);
+            return items;
         }
 
+        public List<CampingCommon> Load()
+        {
+            return GetItems();
+        }
+
+        public void Save(List<CampingCommon> items)
+        {
+            sqlConnection.Open();
+            foreach (var item in items)
+            {
+                var insertStatement = "INSERT INTO DBRentaldetails (Borrower, Item, Quantity) VALUES (@Borrower, @Item, @Quantity)";
+                using (var command = new SqlCommand(insertStatement, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@Borrower", item.Borrower);
+                    command.Parameters.AddWithValue("@Item", item.ItemName);
+                    command.Parameters.AddWithValue("@Quantity", item.Quantity);
+                    command.ExecuteNonQuery();
+                }
+            }
+            sqlConnection.Close();
+        }
 
         public void UpdateItem(CampingCommon item)
         {
-            sqlConnection.Open();
+            string updateStatement = "UPDATE DBRentalDetails SET Quantity = @Quantity, Borrower = @Borrower WHERE Item = @Item";
 
-            var updateStatement = $"";
-
-            sqlConnection.ExecuteNonQuery();
-            sqlConnection.Close();
+            using (var command = new SqlCommand(updateStatement, sqlConnection))
+            {
+                sqlConnection.Open();
+                command.Parameters.AddWithValue("@Borrower", item.Borrower);
+                command.Parameters.AddWithValue("@Item", item.ItemName);
+                command.Parameters.AddWithValue("@Quantity", item.Quantity);
+                command.ExecuteNonQuery();
+                sqlConnection.Close();
+            }
         }
     }
 }

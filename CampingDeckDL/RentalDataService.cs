@@ -15,44 +15,39 @@ namespace CampingDeckDL
         public RentalDataService()
         {
             //rentalDataService = new TextFileDataService();
-            rentalDataService = new InMemoryDataService();
+            //rentalDataService = new InMemoryDataService();
             //rentalDataService = new JsonFileDataService();
-            //rentalDataService = new DBDataService();
+            rentalDataService = new DBDataService();
         }
 
-        public List<CampingCommon> GetItems()
+        public List<CampingCommon> GetAllItems()
         {
-            return rentalDataService.Load();
+            return rentalDataService.GetItems();
         }
 
-        public void SaveItems()
+        public bool BorrowItem(int itemIndex, string borrowerName)
         {
-            rentalDataService.Save(rentalDataService.Load());
-        }
+            var items = rentalDataService.GetItems();
 
-        public bool BorrowItem(int index, string borrowerName)
-        {
-            var items = rentalDataService.Load();
-
-            if (index >= 0 && index < items.Count && items[index].Quantity > 0 && string.IsNullOrEmpty(items[index].Borrower))
+            if (itemIndex >= 0 && itemIndex < items.Count && items[itemIndex].Quantity > 0 && string.IsNullOrEmpty(items[itemIndex].Borrower))
             {
-                items[index].Quantity--;
-                items[index].Borrower = borrowerName;
-                rentalDataService.Save(items);
+                items[itemIndex].Quantity--;
+                items[itemIndex].Borrower = borrowerName;
+                rentalDataService.UpdateItem(items[itemIndex]);
                 return true;
             }
             return false;
         }
 
-        public bool ReturnItem(int index)
+        public bool ReturnItem(int itemIndex)
         {
-            var items = rentalDataService.Load();
+            var items = rentalDataService.GetItems();
 
-            if (index >= 0 && index < items.Count && !string.IsNullOrEmpty(items[index].Borrower))
+            if (itemIndex >= 0 && itemIndex < items.Count && !string.IsNullOrEmpty(items[itemIndex].Borrower))
             {
-                items[index].Quantity++;
-                items[index].Borrower = null;
-                rentalDataService.Save(items);
+                items[itemIndex].Quantity++;
+                items[itemIndex].Borrower = null;
+                rentalDataService.UpdateItem(items[itemIndex]);
                 return true;
             }
             return false;

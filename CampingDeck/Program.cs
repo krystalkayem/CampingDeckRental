@@ -15,7 +15,7 @@ namespace CampingDeck
             string userPin = string.Empty; 
 
             Console.Write("Enter Admin PIN: ");
-            userPin = (Console.ReadLine());
+            userPin = Console.ReadLine();
 
             if (rentalProcess.ValidateAdminPin(userPin))
             {
@@ -71,65 +71,70 @@ namespace CampingDeck
 
         static void ViewAllItems()
         {
-            Console.WriteLine("\nAll Camping Items: ");
             var items = rentalProcess.GetItems();
-
+            if (items.Count == 0)
+            {
+                Console.WriteLine("No items found.");
+                return;
+            }
+            Console.WriteLine("\nAll Camping Items:");
             foreach (var item in items)
             {
-                Console.WriteLine($"Item: {item.Name}, Quantity: {item.Quantity}");
+                Console.WriteLine($"- {item.ItemName} (Oty:{item.Quantity})");
             }
         }
 
         static void RentItem()
         {
             var items = rentalProcess.GetItems();
-            Console.WriteLine("\nAvailable Items:");
-            for (int i = 0; i < items.Count; i++)
+            if (items.Count == 0)
             {
-                Console.WriteLine($"[{i + 1}] {items[i].Name} (Qty: {items[i].Quantity})");
+                Console.WriteLine("No items available to rent.");
+                return;
             }
-
+            Console.WriteLine("\nAvailable Items:");
+            for (int i = 0; i <  items.Count; i++)
+            {
+                Console.WriteLine($"[{i + 1}] {items[i].ItemName} (Qty: {items[i].Quantity})");
+            }
             Console.Write("Enter the number of the item you want to rent: ");
-            int index = Convert.ToInt32(Console.ReadLine()) - 1;
+            if (!int.TryParse(Console.ReadLine(), out int index) || index < 1 || index > items.Count)
+            {
+                Console.WriteLine("Invalid item number.");
+                return;
+            }
             Console.Write("Enter your full name: ");
             string name = Console.ReadLine();
 
-            if (rentalProcess.BorrowItem(index, name))
-            {
+            if (rentalProcess.BorrowItem(index - 1, name))
                 Console.WriteLine("Item successfully rented!");
-            }
             else
-            {
                 Console.WriteLine("Failed to rent item.");
-            }
         }
 
         public static void ReturnItem()
         {
-            Console.WriteLine("\nRented Items: ");
             var rentedItems = rentalProcess.GetRentedItems();
-
             if (rentedItems.Count == 0)
             {
                 Console.WriteLine("No items currently rented.");
                 return;
             }
+            Console.WriteLine("\nRented Items:");
             for (int i = 0; i < rentedItems.Count; i++)
             {
-                Console.WriteLine($"[{i + 1}] {rentedItems[i].Name} - Borrowed by: {rentedItems[i].Borrower}");
+                Console.WriteLine($"[{i + 1}] {rentedItems[i].ItemName} - Borrowed by: {rentedItems[i].Borrower}");
             }
-
-            Console.Write("Enter the number of the item you want to return: ");
-            int index = Convert.ToInt32(Console.ReadLine()) - 1;
-
-            if (rentalProcess.ReturnItem(index))
+            Console.Write("Enter the number of the item you want to return:");
+            if (!int.TryParse(Console.ReadLine(), out int index) || index < 1 || index > rentedItems.Count)
             {
+                Console.Write("Invalid selection.");
+                return;
+            }
+            if (rentalProcess.ReturnItem(index - 1))
                 Console.WriteLine("Item successfully returned!");
-            }
             else
-            {
-                Console.WriteLine("Failed to return item. Please check the item number.");
-            }
+                Console.WriteLine("Failed to return item.");
         }
     }
 }

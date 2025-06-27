@@ -3,12 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampingDeck", "CampingDeck.csproj", "{F50B0D2D-9195-4278-A353-9A5232967334}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C90174D4-9969-4D81-84C6-96383D8C0A88} = {C90174D4-9969-4D81-84C6-96383D8C0A88}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampingDeckBL", "..\CampingDeckBL\CampingDeckBL.csproj", "{3E062783-FB70-4B6A-A852-A105C4B278FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampingDeckDL", "..\CampingDeckDL\CampingDeckDL.csproj", "{C90174D4-9969-4D81-84C6-96383D8C0A88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCommon", "..\RentalCommon\RentalCommon.csproj", "{A49F7E1F-62BA-45E0-88D4-501037FBBFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "..\WebApplication1\WebApplication1.csproj", "{873C1AE9-4629-49FD-8E45-23CBF76D1FC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopRental", "..\DesktopRental\DesktopRental.csproj", "{7908565C-2D77-48AF-BDDB-BD7D6C886A00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +39,14 @@ Global
 		{A49F7E1F-62BA-45E0-88D4-501037FBBFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A49F7E1F-62BA-45E0-88D4-501037FBBFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A49F7E1F-62BA-45E0-88D4-501037FBBFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{873C1AE9-4629-49FD-8E45-23CBF76D1FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{873C1AE9-4629-49FD-8E45-23CBF76D1FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{873C1AE9-4629-49FD-8E45-23CBF76D1FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{873C1AE9-4629-49FD-8E45-23CBF76D1FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7908565C-2D77-48AF-BDDB-BD7D6C886A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7908565C-2D77-48AF-BDDB-BD7D6C886A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7908565C-2D77-48AF-BDDB-BD7D6C886A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7908565C-2D77-48AF-BDDB-BD7D6C886A00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

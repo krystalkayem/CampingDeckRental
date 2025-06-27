@@ -33,14 +33,22 @@ namespace CampingDeckDL
             items.Add(new CampingCommon("Blankets", 10));
         }
 
-        public void Save(List<CampingCommon> newItems)
-        {
-            items = new List<CampingCommon>(newItems);
-        }
-
-        public List<CampingCommon> Load()
+        public List <CampingCommon> GetItems()
         {
             return items;
+        }
+
+        public void UpdateItem(CampingCommon item)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ItemName == item.ItemName)
+                {
+                    items[i].Quantity = item.Quantity;
+                    items[i].Borrower = item.Borrower;
+                    return;
+                }
+            }
         }
     }
 }

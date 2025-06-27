@@ -53,6 +53,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -122,6 +128,16 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -191,6 +207,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -218,7 +240,7 @@
         "projectName": "RentalCommon",
         "projectPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\RentalCommon.csproj",
         "packagesPath": "C:\\Users\\jinky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jinky\\Source\\Repos\\CampingDRental\\RentalCommon\\obj\\",
+        "outputPath": "C:\\Users\\jinky\\source\\repos\\CampingDRental\\RentalCommon\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

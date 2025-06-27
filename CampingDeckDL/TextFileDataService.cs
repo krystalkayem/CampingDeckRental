@@ -9,52 +9,60 @@ namespace CampingDeckDL
 {
     public class TextFileDataService : IRentalDataService
     {
-        string filePath = "campingItems.txt";
+        string filePath = "camping_items.txt";
         List<CampingCommon> items = new List<CampingCommon>();
 
         public TextFileDataService()
         {
-            LoadDataFromFile();
+            GetDataFromFile();
         }
 
-        private void LoadDataFromFile()
+        private void GetDataFromFile()
         {
             if (!File.Exists(filePath))
                 return;
 
-            var lines = File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines(filePath);
             foreach (var line in lines)
             {
-                var parts = line.Split('|');
-
-                items.Add(new CampingCommon(parts[0], int.Parse(parts[1]))
+                string[] parts = line.Split('|');
+                if (parts.Length >= 2 && int.TryParse(parts[1], out int quantity))
                 {
-                    Borrower = string.IsNullOrEmpty(parts[2]) ? null : parts[2]
-                }); 
+                    var item = new CampingCommon(parts[0], quantity);
+                    item.Borrower = parts.Length > 2 ? parts[2] : string.Empty;
+                    items.Add(item);
+                }
             }
         }
 
         private void WriteDataTofile()
         {
-            var lines = new string[items.Count];
-
-            for (int i = 0; i < items.Count; i++)
+            List<string> lines = new List<string>();
+            foreach (var item in items)
             {
-                lines[i] = $"{items[i].Name} | {items[i].Quantity} | {items[i].Borrower}";
+                lines.Add($"{item.ItemName} | {item.Quantity} | {item.Borrower ?? ""}");
             }
 
             File.WriteAllLines(filePath, lines);
         }
 
-        public void Save(List<CampingCommon> newItems)
-        {
-            items = new List<CampingCommon>(newItems);
-            WriteDataTofile();
-        }
-
-        public List<CampingCommon> Load()
+        public List<CampingCommon> GetItems()
         {
             return items;
+        }
+
+        public void UpdateItem(CampingCommon item)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ItemName == item.ItemName)
+                {
+                    items[i].Quantity = item.Quantity;
+                    items[i].Borrower = item.Borrower;
+                    WriteDataTofile();
+                    return;
+                }
+            }
         }
     }
 }

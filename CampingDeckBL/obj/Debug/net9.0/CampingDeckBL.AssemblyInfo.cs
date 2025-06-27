@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CampingDeckBL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74927f26d8b8410016e78065fb6843513e365b83")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e1fe90012ee77dce167013b282f6ab2e3d5fa17")]
 [assembly: System.Reflection.AssemblyProductAttribute("CampingDeckBL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CampingDeckBL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

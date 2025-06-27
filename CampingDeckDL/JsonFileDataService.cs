@@ -11,43 +11,50 @@ namespace CampingDeckDL
     public class JsonFileDataService : IRentalDataService
     {
         static List<CampingCommon> items = new List<CampingCommon>();
-        static string jsonFilePath = "campingItems.json";
+        static string jsonFilePath = "camping_items.json";
 
         public JsonFileDataService()
         {
-            ReadJsonDataFromFile();
+            LoadItemsFromFile();
         }
 
-        private void ReadJsonDataFromFile()
+        private void LoadItemsFromFile()
         {
             if (!File.Exists(jsonFilePath))
             {
-                File.Create(jsonFilePath).Close();
-                return;
+                string json = File.ReadAllText(jsonFilePath);
+                var loadedItems = JsonSerializer.Deserialize<List<CampingCommon>>(json);
+                if (loadedItems != null)
+                {
+                    items = loadedItems;
+                }
             }
-
-            string jsonText = File.ReadAllText(jsonFilePath);
-
-            items = JsonSerializer.Deserialize<List<CampingCommon>>(jsonText, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
-                ?? new List<CampingCommon>();
         }
 
-        private void WriteJsonDataToFile()
+        private void SaveItemsToFile()
         {
-            string jsonString = JsonSerializer.Serialize(items, new JsonSerializerOptions { WriteIndented = true });
+            string json = JsonSerializer.Serialize(items, new JsonSerializerOptions { WriteIndented = true });
 
-            File.WriteAllText(jsonFilePath, jsonString);
+            File.WriteAllText(jsonFilePath, json);
         }
 
-        public void Save(List<CampingCommon> newItems)
-        {
-            items = new List<CampingCommon>(newItems);
-            WriteJsonDataToFile();
-        }
-
-        public List<CampingCommon> Load()
+        public List<CampingCommon> GetItems()
         {
             return items;
+        }
+
+        public void UpdateItem(CampingCommon item)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ItemName == item.ItemName)
+                {
+                    items[i].Quantity = item.Quantity;
+                    items[i].Borrower = item.Borrower;
+                    SaveItemsToFile();
+                    return;
+                }
+            }
         }
     }
 }

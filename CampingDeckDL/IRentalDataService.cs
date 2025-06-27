@@ -11,5 +11,5 @@ namespace CampingDeckDL
     {
         List<CampingCommon> GetItems();
         void UpdateItem(CampingCommon item);
-    }
+    } 
 }

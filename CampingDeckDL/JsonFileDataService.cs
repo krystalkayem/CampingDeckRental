@@ -13,7 +13,7 @@ namespace CampingDeckDL
         static List<CampingCommon> items = new List<CampingCommon>();
         static string jsonFilePath = "camping_items.json";
 
-        public JsonFileDataService()
+        public JsonFileDataService() 
         {
             LoadItemsFromFile();
         }

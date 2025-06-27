@@ -11,7 +11,7 @@ namespace CampingDeckDL
 
         static SqlConnection sqlConnection;
 
-        public DBDataService()
+        public DBDataService() 
         {
             sqlConnection = new SqlConnection(connectionString);
         }

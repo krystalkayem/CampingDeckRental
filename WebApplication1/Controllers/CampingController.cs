@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
         {
             return rentalProcess.GetItems();
         }
-
+         
         [HttpGet("rented")]
         public List<CampingCommon> GetRentedItems()
         {

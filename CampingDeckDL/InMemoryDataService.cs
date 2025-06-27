@@ -15,7 +15,7 @@ namespace CampingDeckDL
         {
             CreateDummyCampingItems();
         }
-
+         
         private void CreateDummyCampingItems()
         {
             items.Add(new CampingCommon("Bike", 10));

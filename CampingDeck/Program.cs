@@ -11,7 +11,6 @@ namespace CampingDeck
         {
             Console.WriteLine("Welcome to Campingdeck Rentals! :)");
 
-            //pin, rent an item, return an item, view all items
             string userPin = string.Empty; 
 
             Console.Write("Enter Admin PIN: ");

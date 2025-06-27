@@ -13,7 +13,7 @@ namespace CampingDeckDL
         IRentalDataService rentalDataService;
 
         public RentalDataService()
-        {
+        { 
             //rentalDataService = new TextFileDataService();
             //rentalDataService = new InMemoryDataService();
             //rentalDataService = new JsonFileDataService();

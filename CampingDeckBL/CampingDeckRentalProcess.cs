@@ -10,7 +10,7 @@ namespace CampingDeckBL
         RentalDataService rentalDataService = new RentalDataService();
 
 
-        public List<CampingCommon> GetItems()
+        public List<CampingCommon> GetItems()   
         {
             return rentalDataService.GetAllItems();
         }

@@ -13,7 +13,7 @@ namespace CampingDeckDL
         List<CampingCommon> items = new List<CampingCommon>();
 
         public TextFileDataService()
-        {
+        { 
             GetDataFromFile();
         }
 

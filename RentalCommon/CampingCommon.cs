@@ -17,7 +17,7 @@ namespace RentalCommon
             {
                 if (value.Length == 4 || value.Length == 6)
                 {
-                    _userPin = value;
+                    _userPin = value; 
                 }
             }
         }
